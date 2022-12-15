@@ -1,24 +1,34 @@
-def mostCalories(caloriesList):
-    maxCalories = 0
-    runningMax = 0
+"""Module most_calories printing sum of calories."""
 
-    for line in caloriesList:
-        if line == '':
-            if runningMax > maxCalories:
-                maxCalories = runningMax
+def most_calories(calories_list):
+    """
+        Finds the sum of the calories carried by the elf carrying the most calories.
+
+        Parameters
+        ----------
+            calories_list : list[str]
+                list of parsed calories
+    """
+
+    max_calories = 0
+    running_max = 0
+
+    for line in calories_list:
+        if not line:
+            if running_max > max_calories:
+                max_calories = running_max
 
             # reset the running maximum for the next set of calories
-            runningMax = 0
+            running_max = 0
 
             continue
-        
-        runningMax += int(line)
+        running_max += int(line)
 
-    return maxCalories
+    return max_calories
 
 if __name__ == '__main__':
-    with open('input.txt') as file:
+    with open('input.txt', encoding='UTF-8') as file:
         lines = [line.rstrip() for line in file]
 
-        result = mostCalories(lines)
-        print(result)
+        RESULT = most_calories(lines)
+        print(RESULT)
