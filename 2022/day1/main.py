@@ -81,7 +81,7 @@ if __name__ == '__main__':
     TEST = 'example.txt'
     REAL = 'input.txt'
 
-    with open(TEST, encoding='UTF-8') as file:
+    with open(REAL, encoding='UTF-8') as file:
         lines = [line.rstrip() for line in file]
 
         RESULT = most_calories(lines)
