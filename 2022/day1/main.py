@@ -31,7 +31,7 @@ def most_calories(calories_list):
 
 def top_three_most_calories(calories_list):
     """
-        Finds the sum of the calories carried by the elf carrying the most calories.
+        Finds the sum of the calories carried by the top three elves carrying the most calories.
 
         Parameters
         ----------
