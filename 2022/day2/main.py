@@ -40,6 +40,9 @@ def rock_paper_scissors(strategy_list, points):
         ----------
             outcomes_list : list[str]
                 list of outcomes
+
+            points: dict[str, int]
+                dictionary of point allocation
     """
 
     score = 0
