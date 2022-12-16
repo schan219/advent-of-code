@@ -64,15 +64,15 @@ def top_three_most_calories(calories_list):
         running_max += int(line)
 
     if running_max > 0:
-            arr = [third_max_calories, second_max_calories, first_max_calories]
-            arr = sorted(arr, reverse=True)
+        arr = [third_max_calories, second_max_calories, first_max_calories]
+        arr = sorted(arr, reverse=True)
 
-            first_max_calories = arr[0]
-            second_max_calories = arr[1]
-            third_max_calories = arr[2]
+        first_max_calories = arr[0]
+        second_max_calories = arr[1]
+        third_max_calories = arr[2]
 
-            if running_max > arr[2]:
-                third_max_calories = running_max
+        if running_max > arr[2]:
+            third_max_calories = running_max
 
 
     return first_max_calories + second_max_calories + third_max_calories
