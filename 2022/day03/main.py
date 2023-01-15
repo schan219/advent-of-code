@@ -25,14 +25,11 @@ def scan_rucksack(rucksack):
             rucksack : str
                 list of items in rucksack represented by characters
     """
-    first_compartment = rucksack[:len(rucksack)//2]
-    second_compartment = rucksack[len(rucksack)//2:]
+    first_compartment = set(rucksack[:len(rucksack)//2])
+    second_compartment = set(rucksack[len(rucksack)//2:])
 
-    for first_item in first_compartment:
-        for second_item in second_compartment:
-            if first_item == second_item:
-                return get_priority(first_item)
-    return 0
+    same_item = first_compartment.intersection(second_compartment)
+    return get_priority(same_item.pop())
 
 def get_priority(char):
     """
@@ -84,7 +81,7 @@ def find_badge_for_group(group):
 
         items = items.intersection(rucksack)
 
-    return get_priority(items)
+    return get_priority(items.pop())
 
 def chunk_rucksacks(rucksacks):
     """
