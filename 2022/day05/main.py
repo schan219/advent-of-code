@@ -13,7 +13,7 @@ def parse(lines):
         elif line[0] == '\n':
             continue
         elif line[0:4] == 'move':
-            new_list = execute_moves(line, new_list)
+            new_list = execute_crane_9001_moves(line, new_list)
     top_crates = get_top_crates(new_list)
     return top_crates
 
@@ -36,7 +36,7 @@ def get_elements(line):
         stack.append('0')
     return stack
 
-def execute_moves(line, stacks):
+def execute_crane_9000_moves(line, stacks):
     # number of crates moved, src, dst
     instructions = re.split(r'\D+', line)
     num_crates = int(instructions[1])
@@ -46,6 +46,23 @@ def execute_moves(line, stacks):
     for _ in range(0, num_crates):
         element = stacks[src-1].pop()
         stacks[dst-1].append(element)
+    return stacks
+
+def execute_crane_9001_moves(line, stacks):
+    # number of crates moved, src, dst
+    instructions = re.split(r'\D+', line)
+    num_crates = int(instructions[1])
+    src = int(instructions[2])
+    dst = int(instructions[3])
+    elements = []
+
+    for _ in range(num_crates):
+        element = stacks[src-1].pop()
+        elements.insert(0, element)
+
+    for _, element in enumerate(elements):
+        stacks[dst-1].append(element)
+
     return stacks
 
 def get_top_crates(stacks):
@@ -59,7 +76,7 @@ if __name__ == '__main__':
     TEST = 'example.txt'
     REAL = 'input.txt'
 
-    with open(TEST, encoding='UTF-8') as file:
+    with open(REAL, encoding='UTF-8') as file:
         lines = [line for line in file]
 
     RESULT = parse(lines)
