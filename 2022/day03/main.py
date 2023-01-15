@@ -75,13 +75,16 @@ def find_badge_for_group(group):
             group : list[str]
                 list of rucksacks in a group represented by strings
     """
-    for first_item in group[0]:
-        for second_item in group[1]:
-            if first_item == second_item:
-                for third_item in group[2]:
-                    if first_item == third_item:
-                        return get_priority(first_item)
 
+    items = set()
+    for rucksack in group:
+        if len(items) == 0:
+            items = set(rucksack)
+            continue
+
+        items = items.intersection(rucksack)
+
+    return get_priority(items)
 
 def chunk_rucksacks(rucksacks):
     """
